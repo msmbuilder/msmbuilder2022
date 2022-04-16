@@ -5,7 +5,12 @@ import pickle
 import warnings
 
 import numpy as np
-from sklearn.externals.joblib import load as jl_load
+
+# sklearn.externals.joblib is removed in scikit-learn v0.23
+try:
+    from sklearn.externals.joblib import load as jl_load
+except ImportError:
+    from joblib import load as jl_load
 
 __all__ = ['printoptions', 'verbosedump', 'verboseload', 'dump', 'load']
 
