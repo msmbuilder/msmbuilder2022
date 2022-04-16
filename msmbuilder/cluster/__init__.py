@@ -61,11 +61,11 @@ def _replace_labels(doc):
     return doc[:labelstart] + replace + doc[labelend:]
 
 
-class KMeans(MultiSequenceClusterMixin, cluster.KMeans, BaseEstimator):
+class KMeans(MultiSequenceClusterMixin_update, cluster.KMeans, BaseEstimator):
     __doc__ = _replace_labels(cluster.KMeans.__doc__)
 
 
-class MiniBatchKMeans(MultiSequenceClusterMixin, cluster.MiniBatchKMeans,
+class MiniBatchKMeans(MultiSequenceClusterMixin_update, cluster.MiniBatchKMeans,
                       BaseEstimator):
     __doc__ = _replace_labels(cluster.MiniBatchKMeans.__doc__)
 
