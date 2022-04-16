@@ -17,7 +17,7 @@ except ImportError:
 
 from ..base import BaseEstimator
 from .base import MultiSequenceClusterMixin
-from .base import MultiSequenceClusterMixin_update
+# from .base import MultiSequenceClusterMixin_update
 from .kcenters import KCenters
 from .ndgrid import NDGrid
 from .agglomerative import LandmarkAgglomerative
@@ -61,11 +61,11 @@ def _replace_labels(doc):
     return doc[:labelstart] + replace + doc[labelend:]
 
 
-class KMeans(MultiSequenceClusterMixin_update, cluster.KMeans, BaseEstimator):
+class KMeans(MultiSequenceClusterMixin, cluster.KMeans, BaseEstimator):
     __doc__ = _replace_labels(cluster.KMeans.__doc__)
 
 
-class MiniBatchKMeans(MultiSequenceClusterMixin_update, cluster.MiniBatchKMeans,
+class MiniBatchKMeans(MultiSequenceClusterMixin, cluster.MiniBatchKMeans,
                       BaseEstimator):
     __doc__ = _replace_labels(cluster.MiniBatchKMeans.__doc__)
 
