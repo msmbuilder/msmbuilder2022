@@ -17,6 +17,7 @@ except ImportError:
 
 from ..base import BaseEstimator
 from .base import MultiSequenceClusterMixin
+from .base import MultiSequenceClusterMixin_update
 from .kcenters import KCenters
 from .ndgrid import NDGrid
 from .agglomerative import LandmarkAgglomerative
