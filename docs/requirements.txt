@@ -1,0 +1,10 @@
+numpydoc
+matplotlib
+jupyter
+notebook
+jinja2
+openmm
+nbconvert
+msmb_data
+pyparsing
+msmexplorer
