@@ -7,7 +7,11 @@ import tempfile
 import numpy as np
 from mdtraj.testing import get_fn
 from nose.tools import assert_raises, assert_raises_regexp
-from sklearn.externals.joblib import Parallel, delayed
+# sklearn.externals.joblib is removed in scikit-learn v0.23
+try:
+    from joblib import Parallel, delayed
+except ImportError:
+    from sklearn.externals.joblib import Parallel, delayed
 
 from msmbuilder.dataset import dataset
 from .test_commands import tempdir
@@ -112,19 +116,6 @@ def test_4():
         shutil.rmtree(path)
 
 
-def test_mdtraj_1():
-    ds = dataset(get_fn('') + '*.pdb', fmt='mdtraj', verbose=True)
-    print(ds.keys())
-    print(ds.get(0))
-    print(ds.provenance)
-
-    ds = dataset(get_fn('') + '*.pdb', fmt='mdtraj', atom_indices=[1, 2],
-                 verbose=True)
-    print(ds.keys())
-    print(ds.get(0))
-    print(ds.provenance)
-
-
 def test_hdf5_1():
     with tempdir():
         ds = dataset('ds.h5', 'w', 'hdf5')
@@ -170,7 +161,7 @@ def test_hdf5_3():
 
         iter_args = (dataset('ds.h5') for _ in range(5))
 
-        sums = Parallel(n_jobs=2)(
+        sums = Parallel(n_jobs=1)(
             delayed(_sum_helper)(a) for a in iter_args)
 
         assert all(s == ref_sum for s in sums)
