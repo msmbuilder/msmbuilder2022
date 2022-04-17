@@ -3,6 +3,7 @@ import numpy as np
 from mdtraj.testing import get_fn, eq
 
 from msmbuilder.featurizer import SASAFeaturizer
+from msmbuilder.example_datasets import FsPeptide
 
 t = FsPeptide().get_cached().trajectories[0][:10]
 
