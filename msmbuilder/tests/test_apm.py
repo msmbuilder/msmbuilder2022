@@ -6,10 +6,10 @@ from mdtraj.testing import eq
 
 from msmbuilder.cluster import APM
 from msmbuilder.example_datasets import FsPeptide
-
+# numpy.testing.decorators removed in numpy >= 1.18
 try:
     from numpy.testing.decorators import skipif
-except:
+except ImportError:
     from numpy.testing._private.decorators import skipif
 
 rs = np.random.RandomState(42)
