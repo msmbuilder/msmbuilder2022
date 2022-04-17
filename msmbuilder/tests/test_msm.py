@@ -10,7 +10,11 @@ import sklearn.pipeline
 from mdtraj.testing import eq
 from numpy.testing import assert_approx_equal
 from six import PY3
-from sklearn.externals.joblib import load, dump
+# sklearn.externals.joblib is removed in scikit-learn v0.23
+try:
+    from joblib import load, dump
+except ImportError:
+    from sklearn.externals.joblib import load, dump
 from sklearn.pipeline import Pipeline
 
 from msmbuilder import cluster
