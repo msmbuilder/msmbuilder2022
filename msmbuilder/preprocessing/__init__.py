@@ -7,6 +7,13 @@ from __future__ import print_function, division, absolute_import
 
 from sklearn import preprocessing
 
+# sklearn.impute.SimpleImputer since scikit-learn v0.20
+try: 
+    from sklearn.impute import SimpleImputer
+    low_version_of_sklearn = False
+except:
+    low_version_of_sklearn = True
+
 from .base import (MultiSequencePreprocessingMixin,
                    MultiSequenceOnlinePreprocessingMixin)
 from .timeseries import Butterworth, EWMA, DoubleEWMA
@@ -28,8 +35,12 @@ if hasattr(preprocessing, 'FunctionTransformer'):
         __doc__ = preprocessing.FunctionTransformer.__doc__
 
 
-class Imputer(MultiSequencePreprocessingMixin, preprocessing.Imputer):
-    __doc__ = preprocessing.Imputer.__doc__
+if low_version_of_sklearn:
+    class Imputer(MultiSequencePreprocessingMixin, preprocessing.Imputer):
+        __doc__ = preprocessing.Imputer.__doc__
+else:
+    class Imputer(MultiSequencePreprocessingMixin, SimpleImputer):
+        __doc__ = SimpleImputer.__doc__  
 
 
 class KernelCenterer(MultiSequencePreprocessingMixin,
