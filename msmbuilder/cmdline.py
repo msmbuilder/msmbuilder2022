@@ -367,19 +367,20 @@ class NumpydocClassCommand(Command):
                 if 'bool' in typemap[arg]:
                     kwargs['action'] = FlagAction
 
-                if hasattr(cls, '_{}_type'.format(arg)):
-                    # If the docstring *contains* the word float or int,
-                    # parsing will fail for things not of that type
-                    # even if a custom loader will eventually be used.
-                    # Let's check for custom loaders here and set the type
-                    # to str.
-                    kwargs['type'] = str
                 else:
-                    basic_types = {'str': str, 'float': float, 'int': int}
-                    for basic_type in basic_types:
-                        if basic_type in typemap[arg]:
-                            kwargs['type'] = basic_types[basic_type]
-                            break
+                    if hasattr(cls, '_{}_type'.format(arg)):
+                        # If the docstring *contains* the word float or int,
+                        # parsing will fail for things not of that type
+                        # even if a custom loader will eventually be used.
+                        # Let's check for custom loaders here and set the type
+                        # to str.
+                        kwargs['type'] = str
+                    else:
+                        basic_types = {'str': str, 'float': float, 'int': int}
+                        for basic_type in basic_types:
+                            if basic_type in typemap[arg]:
+                                kwargs['type'] = basic_types[basic_type]
+                                break
 
             group.add_argument('--{}'.format(arg), **kwargs)
 
