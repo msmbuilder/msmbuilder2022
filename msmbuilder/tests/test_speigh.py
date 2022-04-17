@@ -4,7 +4,11 @@ import numpy as np
 import scipy.linalg
 from msmbuilder.decomposition._speigh import project
 from msmbuilder.decomposition._speigh import speigh, scdeflate
-from numpy.testing.decorators import skipif
+# numpy.testing.decorators removed in numpy >= 1.18
+try:
+    from numpy.testing.decorators import skipif
+except ImportError:
+    from numpy.testing._private.decorators import skipif
 
 try:
     import cvxpy as cp
