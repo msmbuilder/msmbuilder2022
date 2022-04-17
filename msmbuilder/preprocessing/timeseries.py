@@ -97,13 +97,13 @@ class EWMA(MultiSequencePreprocessingMixin):
         self.min_periods = min_periods
         self.freq = freq
         self.adjust = adjust
-
+    # freq removed in Pandas>=0.23
     def _ewma(self, sequence):
         ewma = DataFrame(sequence).ewm(com=self.com,
                                        span=self.span,
                                        halflife=self.halflife,
                                        min_periods=self.min_periods,
-                                       freq=self.freq,
+                                       ##### freq=self.freq,
                                        adjust=self.adjust).mean()
 
         return ewma.values
