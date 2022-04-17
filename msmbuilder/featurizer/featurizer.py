@@ -18,7 +18,11 @@ from msmbuilder import libdistance
 import itertools
 import inspect
 from sklearn.base import TransformerMixin
-from sklearn.externals.joblib import Parallel, delayed
+# sklearn.externals.joblib is removed in scikit-learn v0.23
+try:
+    from joblib import Parallel, delayed
+except ImportError:
+    from sklearn.externals.joblib import Parallel, delayed
 from ..base import BaseEstimator
 
 def zippy_maker(aind_tuples, top):
