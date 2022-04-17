@@ -11,7 +11,7 @@ import inspect
 # numpy.testing.decorators removed in numpy >= 1.18
 try:
     from numpy.testing.decorators import skipif
-except:
+except ImportError:
     from numpy.testing._private.decorators import skipif
 
 from msmbuilder.example_datasets import MinimalFsPeptide
