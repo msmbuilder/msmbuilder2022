@@ -8,9 +8,9 @@ import numpy as np
 
 # sklearn.externals.joblib is removed in scikit-learn v0.23
 try:
-    from sklearn.externals.joblib import load as jl_load
-except ImportError:
     from joblib import load as jl_load
+except ImportError:
+    from sklearn.externals.joblib import load as jl_load
 
 __all__ = ['printoptions', 'verbosedump', 'verboseload', 'dump', 'load']
 
