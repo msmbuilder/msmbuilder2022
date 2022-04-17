@@ -6,8 +6,11 @@ from msmbuilder.featurizer import ContactFeaturizer
 from msmbuilder.featurizer import LogisticContactFeaturizer
 import mdtraj as md
 import itertools
-from numpy.testing.decorators import skipif
-
+# numpy.testing.decorators removed in numpy >= 1.18
+try: 
+    from numpy.testing.decorators import skipif
+except ImportError:
+    from numpy.testing._private.decorators import skipif
 
 def test_contacts():
     trajectories = MinimalFsPeptide().get_cached().trajectories
