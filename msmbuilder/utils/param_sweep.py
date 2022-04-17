@@ -1,15 +1,18 @@
 from __future__ import print_function, division, absolute_import
 from sklearn import clone
 
-# for compatibility with scikit-learn 0.20
+# for compatibility with scikit-learn>=0.20
 # same as from sklearn.model_selection._search import ParameterGrid
-from sklearn.model_selection import ParameterGrid
+try:
+    from sklearn.model_selection import ParameterGrid
+except ImportError:
+    from sklearn.grid_search import ParameterGrid
 
 # sklearn.externals.joblib is removed in scikit-learn v0.23
 try:
-    from sklearn.externals.joblib import Parallel, delayed
-except ImportError:
     from joblib import Parallel, delayed
+except ImportError:
+    from sklearn.externals.joblib import Parallel, delayed
 
 __all__ = ['param_sweep']
 
