@@ -8,7 +8,11 @@ from mdtraj.testing import eq
 from scipy.stats import vonmises as vm
 import itertools
 import inspect
-from numpy.testing.decorators import skipif
+# numpy.testing.decorators removed in numpy >= 1.18
+try:
+    from numpy.testing.decorators import skipif
+except:
+    from numpy.testing._private.decorators import skipif
 
 from msmbuilder.example_datasets import MinimalFsPeptide
 from msmbuilder.feature_selection import FeatureSelector
