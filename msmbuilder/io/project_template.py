@@ -151,8 +151,14 @@ class MetadataPackageLoader(PackageLoader):
             return source, filename, uptodate
 
         end = source[beg:].find(end_str) + beg
+        
+        # yaml update
+        try:
+            self.meta[filename] = yaml.load(source[beg + len(beg_str):end])
+        except:
+            from yaml.loader import Loader
+            self.meta[filename] = yaml.load(source[beg + len(beg_str):end],Loader=Loader)
 
-        self.meta[filename] = yaml.load(source[beg + len(beg_str):end])
         remove_meta = source[:beg] + source[end:]
         return remove_meta, filename, uptodate
 
