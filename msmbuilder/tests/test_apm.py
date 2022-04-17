@@ -17,7 +17,7 @@ rs = np.random.RandomState(42)
 X1 = 0.3 * rs.randn(1000, 10).astype(np.double)
 X2 = 0.3 * rs.randn(1000, 10).astype(np.float32)
 
-trj = FsPeptide().get_cache().trajectories[0][0:100]
+trj = FsPeptide().get_cached().trajectories[0][0:100]
 
 
 def test_shapes():
