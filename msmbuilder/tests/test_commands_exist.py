@@ -11,7 +11,11 @@ import msmbuilder.example_datasets
 import msmbuilder.featurizer
 import msmbuilder.msm
 
-from numpy.testing.decorators import skipif
+# numpy.testing.decorators removed in numpy >= 1.18
+try: 
+    from numpy.testing.decorators import skipif
+except:
+    from numpy.testing._private.decorators import skipif
 
 
 def get_commands_from_helptext():
