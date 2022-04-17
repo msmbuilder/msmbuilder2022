@@ -3,7 +3,11 @@ from __future__ import division
 import numpy as np
 import sklearn.pipeline
 from mdtraj.testing import eq
-from sklearn.externals.joblib import dump as jl_dump
+# sklearn.externals.joblib is removed in scikit-learn v0.23
+try:
+    from joblib import dump as jl_dump
+except ImportError:
+    from sklearn.externals.joblib import dump as jl_dump
 
 from msmbuilder.decomposition import tICA
 from msmbuilder.utils import Subsampler, dump, load
