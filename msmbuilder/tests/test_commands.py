@@ -82,8 +82,8 @@ def shell(str):
 
 
 def test_atomindices_1():
-    fn = get_mdtraj_fn('2EQQ.pdb')
-    t = md.load(fn)
+    # fn = get_mdtraj_fn('2EQQ.pdb')
+    # t = md.load(fn)
     with tempdir():
         shell('msmb AtomIndices -o all.txt --all -a -p %s' % fn)
         shell('msmb AtomIndices -o all-pairs.txt --all -d -p %s' % fn)
@@ -94,8 +94,8 @@ def test_atomindices_1():
 
 
 def test_atomindices_2():
-    fn = get_mdtraj_fn('2EQQ.pdb')
-    t = md.load(fn)
+    # fn = get_mdtraj_fn('2EQQ.pdb')
+    # t = md.load(fn)
     with tempdir():
         shell('msmb AtomIndices -o heavy.txt --heavy -a -p %s' % fn)
         shell('msmb AtomIndices -o heavy-pairs.txt --heavy -d -p %s' % fn)
@@ -108,8 +108,8 @@ def test_atomindices_2():
 
 
 def test_atomindices_3():
-    fn = get_mdtraj_fn('2EQQ.pdb')
-    t = md.load(fn)
+    # fn = get_mdtraj_fn('2EQQ.pdb')
+    # t = md.load(fn)
     with tempdir():
         shell('msmb AtomIndices -o alpha.txt --alpha -a -p %s' % fn)
         shell('msmb AtomIndices -o alpha-pairs.txt --alpha -d -p %s' % fn)
@@ -121,8 +121,8 @@ def test_atomindices_3():
 
 
 def test_atomindices_4():
-    fn = get_mdtraj_fn('2EQQ.pdb')
-    t = md.load(fn)
+    # fn = get_mdtraj_fn('2EQQ.pdb')
+    # t = md.load(fn)
     with tempdir():
         shell('msmb AtomIndices -o minimal.txt --minimal -a -p %s' % fn)
         shell('msmb AtomIndices -o minimal-pairs.txt --minimal -d -p %s' % fn)
