@@ -171,7 +171,6 @@ class MultiSequenceClusterMixin(object):
     def fit_transform(self, sequences, y=None):
         """Alias for fit_predict"""
         return self.fit_predict(sequences, y)
-<<<<<<< HEAD
     
 # Add sample_weight for methods
 class MultiSequenceClusterMixin_update(object):
@@ -322,5 +321,3 @@ class MultiSequenceClusterMixin_update(object):
         """Alias for fit_predict"""
         return self.fit_predict(sequences, y)
     
-=======
->>>>>>> 7d1bb6c
