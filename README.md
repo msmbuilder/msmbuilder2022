@@ -1,7 +1,9 @@
 testmsm 
 ==========
 testmsm is a copy from msmbuilder 3.8.0. You can find the information of msmbuilder 
-in the following. However, msmbuilder has not been updated for a long time.
+in the following. This is the msmbuilder home: https://github.com/msmbuilder/msmbuilder
+
+However, msmbuilder has not been updated for a long time.
 testmsm is used to make changes on msmbuilder and for users to test.
 
 Installation
