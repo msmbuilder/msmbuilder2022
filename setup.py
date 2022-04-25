@@ -53,7 +53,7 @@ except ImportError:
     sys.exit(1)
 
 # #########################
-VERSION = '3.8.0'
+VERSION = '3.9.0'
 ISRELEASED = True
 __version__ = VERSION
 # #########################
@@ -70,11 +70,9 @@ Topic :: Scientific/Engineering
 Operating System :: POSIX
 Operating System :: Unix
 Operating System :: MacOS
-Programming Language :: Python :: 2
-Programming Language :: Python :: 2.7
-Programming Language :: Python :: 3
-Programming Language :: Python :: 3.4
-Programming Language :: Python :: 3.5
+Programming Language :: Python :: 3.7
+Programming Language :: Python :: 3.8
+Programming Language :: Python :: 3.9
 """
 
 if any(cmd in sys.argv for cmd in ('install', 'build', 'develop')):
@@ -194,7 +192,7 @@ extensions.append(
                             pjoin(HMMDIR, 'cephes/')]))
 
 write_version_py(VERSION, ISRELEASED, filename='msmbuilder/version.py')
-setup(name='msmbuilder',
+setup(name='msmbuilder2022',
       author='Robert McGibbon',
       author_email='rmcgibbo@gmail.com',
       description=DOCLINES[0],
