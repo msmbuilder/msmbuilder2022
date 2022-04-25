@@ -1,11 +1,8 @@
-testmsm 
+msmbuilder2022
 ==========
-testmsm is a copy from msmbuilder 3.8.0. You can find the information of msmbuilder 
-in the following. 
-This is the msmbuilder home: https://github.com/msmbuilder/msmbuilder
+msmbuilder2022 is based on msmbuilder-3.8.0
 
-However, msmbuilder has not been updated for a long time.
-testmsm is used to make changes on msmbuilder and for users to test.
+home: https://github.com/msmbuilder/msmbuilder
 
 Installation
 ------------
@@ -15,6 +12,8 @@ The preferred installation mechanism for `testmsm` is with `conda`:
 ```bash
 $ conda install -c conda-forge testmsm
 ```
+
+In the future, msmbuilder2022 conda-forge package will be available.
 
 MSMBuilder
 ==========
