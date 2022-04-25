@@ -13,7 +13,8 @@ The preferred installation mechanism for `msmbuilder2022` is with `conda`:
 $ conda install -c conda-forge testmsm
 ```
 
-Now, the intallation package name is called testmsm
+Now, the intallation package name is called testmsm.
+
 In the future, msmbuilder2022 conda-forge package will be available.
 
 MSMBuilder
