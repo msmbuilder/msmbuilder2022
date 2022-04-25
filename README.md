@@ -47,19 +47,6 @@ Check out the documentation at [msmbuilder.org](http://msmbuilder.org) and
 join the [mailing list](https://mailman.stanford.edu/mailman/listinfo/msmbuilder-user).
 For a broader overview of MSMBuilder, take a look at our [slide deck](http://rawgit.com/msmbuilder/talk/master/index.html).
 
-Installation
-------------
-
-The preferred installation mechanism for `msmbuilder` is with `conda`:
-
-```bash
-$ conda install -c omnia msmbuilder
-```
-
-If you don't have conda, or are new to scientific python, we recommend that
-you download the [Anaconda scientific python distribution](https://store.continuum.io/cshop/anaconda/).
-
-
 Workflow
 --------
 
