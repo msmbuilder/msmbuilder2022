@@ -54,7 +54,12 @@ from sklearn.preprocessing import (Binarizer as BinarizerR,
                                    Normalizer as NormalizerR,
                                    PolynomialFeatures as PolynomialFeaturesR)
 
-from ..preprocessing import (Binarizer, Imputer, KernelCenterer,
+# from ..preprocessing import (Binarizer, Imputer, KernelCenterer,
+                             # LabelBinarizer, MultiLabelBinarizer,
+                             # Normalizer, PolynomialFeatures, Butterworth,
+                             # EWMA, DoubleEWMA)
+
+from msmbuilder.preprocessing import (Binarizer, Imputer, KernelCenterer,
                              LabelBinarizer, MultiLabelBinarizer,
                              Normalizer, PolynomialFeatures, Butterworth,
                              EWMA, DoubleEWMA)

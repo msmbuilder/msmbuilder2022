@@ -8,11 +8,16 @@ from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA as PCAr
 
 from msmbuilder.example_datasets import AlanineDipeptide
-from ..cluster import KCenters
-from ..decomposition import (FactorAnalysis, FastICA, KernelTICA,
-                             MiniBatchSparsePCA, PCA, SparsePCA, tICA)
-from ..decomposition.kernel_approximation import LandmarkNystroem
-from ..featurizer import DihedralFeaturizer
+# from ..cluster import KCenters
+from msmbuilder.cluster import KCenters
+# from ..decomposition import (FactorAnalysis, FastICA, KernelTICA,
+                             # MiniBatchSparsePCA, PCA, SparsePCA, tICA)
+from msmbuilder.decomposition import (FactorAnalysis, FastICA, KernelTICA,
+                               MiniBatchSparsePCA, PCA, SparsePCA, tICA)
+# from ..decomposition.kernel_approximation import LandmarkNystroem
+from msmbuilder.decomposition.kernel_approximation import LandmarkNystroem
+# from ..featurizer import DihedralFeaturizer
+from msmbuilder.featurizer import DihedralFeaturizer
 
 random = np.random.RandomState(42)
 trajs = [random.randn(10, 3) for _ in range(5)]
