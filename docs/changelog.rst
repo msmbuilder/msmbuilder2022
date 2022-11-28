@@ -16,6 +16,7 @@ Improvements
 ~~~~~~~~~~~~
 
 - Added github action workflow for PR.
+- Fixed bugs in ``APM`` algorithm.
 
 
 v3.8 (April 26, 2017)
