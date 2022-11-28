@@ -102,7 +102,7 @@ class APM(BaseEstimator):
     def _run(self):
         """Do the APM lumping.
         """
-        print("Doing APM Clustering...")
+        # print("Doing APM Clustering...")
         # Start looping for maxIter times
         n_macrostates = 1  # initialized as 1 because no macrostate exist in loop 0
         metaQ = -1.0
@@ -118,9 +118,10 @@ class APM(BaseEstimator):
                 self._do_time_clustering(macro_state=k)
 
             # do Lumping
-            n_micro_states = np.amax(self.__temp_labels_) + 1
+            # n_micro_states = np.amax(self.__temp_labels_) + 1
+            n_micro_states = np.max(self.__temp_labels_[0]) + 1
             if n_micro_states > self.n_macrostates:
-                print("PCCA Lumping...", n_micro_states, "microstates")
+                # print("PCCA Lumping...", n_micro_states, "microstates")
                 self.__temp_MacroAssignments_ = self._do_lumping(
                     n_macrostates=n_macrostates)
                 #self.__temp_labels_ = [copy.copy(element) for element in self.__temp_MacroAssignments_]
@@ -196,12 +197,12 @@ class APM(BaseEstimator):
             return 1.0
 
     def _do_time_clustering(self, macro_state=None):
-        print("Doing time clustering...")
+        # print("Doing time clustering...")
         if not self.__micro_stack:
             #print "Stack is emtpy"
             return
         else:
-            print("Stack:", self.__micro_stack)
+            # print("Stack:", self.__micro_stack)
             micro_state = self.__micro_stack[
                 -1
             ]  # last element of self.__micro_stack
