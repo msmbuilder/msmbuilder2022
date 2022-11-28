@@ -1,59 +1,70 @@
 package:
-  name: msmbuilder
-  version: {{ GIT_DESCRIBE_TAG }}
+  name: msmbuilder2022
+  version: {{ environ.get('GIT_DESCRIBE_TAG') }}
 
 source:
   path: ../../
 
 build:
   preserve_egg_dir: True
-  number: {{ GIT_DESCRIBE_NUMBER }}
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  # number: 0
   entry_points:
     - msmb = msmbuilder.scripts.msmb:main
 
-
 requirements:
   build:
-    - python
-    - setuptools
-    - cython
-    - numpy x.x
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    #- pip
+    - python 
     - mdtraj
+    - cython
+    - numpy >=1.17
+    - libgomp  # [linux]
+    - setuptools
   run:
     - python
     - setuptools
-    - numpy x.x
-    - scipy
-    - pandas
-    - six
+    - {{ pin_compatible('numpy') }}
     - mdtraj
-    - scikit-learn
-    - numpydoc
-    - pytables
-    - pyhmc
-    - pyyaml
-    - jinja2
+    - scikit-learn >0.21.1
+    - pandas
     - fastcluster
-
+    - jinja2 <3.1
+    - pyyaml
+    - pyhmc
+    - pytables
+    - numpydoc
+    - six
+    - scipy
+    - libgomp  # [linux]
 
 test:
-  requires:
-    - nose
-    - nose-timer
-    - munkres
-    - numdifftools
-    - statsmodels
-    - hmmlearn
-    - cvxpy # [not win]
-    - msmb_data
   imports:
     - msmbuilder
+    - msmbuilder.cluster
+    - msmbuilder.commands
+    - msmbuilder.decomposition
+    - msmbuilder.example_datasets
+    - msmbuilder.feature_extraction
+    - msmbuilder.feature_selection
+    - msmbuilder.featurizer
+    - msmbuilder.hmm
+    - msmbuilder.io
+    - msmbuilder.libdistance
+    - msmbuilder.lumping
+    - msmbuilder.msm
+    - msmbuilder.preprocessing
+    - msmbuilder.scripts
+    - msmbuilder.tests
+    - msmbuilder.tpt
+    - msmbuilder.utils
   commands:
     - msmb -h
-    - nosetests msmbuilder -v --with-timer --timer-ok 2 --timer-warning 10 --timer-filter error
-
 
 about:
-  home: https://github.com/msmbuilder/msmbuilder
+  home: https://github.com/msmbuilder/msmbuilder2022
   license: LGPLv2.1+
   summary: 'MSMBuilder: Statistical models for biomolecular dynamics'

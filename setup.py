@@ -54,7 +54,7 @@ except ImportError:
 
 # #########################
 VERSION = '3.9.0'
-ISRELEASED = True
+ISRELEASED = False
 __version__ = VERSION
 # #########################
 
