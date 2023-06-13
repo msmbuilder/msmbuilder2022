@@ -21,7 +21,7 @@ requirements:
     - python 
     - mdtraj
     - cython
-    - numpy >=1.17
+    - numpy >=1.17, <=1.23
     - libgomp  # [linux]
     - setuptools
   run:
@@ -29,6 +29,7 @@ requirements:
     - setuptools
     - {{ pin_compatible('numpy') }}
     - mdtraj
+    - numpy >=1.17, <=1.23
     - scikit-learn >0.21.1
     - pandas
     - fastcluster
