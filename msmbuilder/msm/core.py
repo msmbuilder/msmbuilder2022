@@ -70,7 +70,7 @@ class _MappingTransformMixin(TransformerMixin):
             raise ValueError("Each sequence must be 1D")
 
         f = np.vectorize(lambda k: self.mapping_.get(k, np.nan),
-                         otypes=[np.float])
+                         otypes=[float])
 
         a = f(sequence)
         if mode == 'fill':
@@ -557,9 +557,9 @@ def _transition_counts(sequences, lag_time=1, sliding_window=True):
                            and not contains_none
                            and classes.dtype.kind == 'i'
                            and np.all(classes == np.arange(n_states)))
-    mapping_fn = np.vectorize(mapping.get, otypes=[np.int])
+    mapping_fn = np.vectorize(mapping.get, otypes=[int])
     none_to_nan = np.vectorize(lambda x: np.nan if x is None else x,
-                               otypes=[np.float])
+                               otypes=[float])
 
     counts = np.zeros((n_states, n_states), dtype=float)
     _transitions = []

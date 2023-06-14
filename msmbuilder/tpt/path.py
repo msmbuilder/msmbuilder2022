@@ -86,8 +86,8 @@ def top_path(sources, sinks, net_flux):
            pathways from short off-equilibrium simulations." PNAS 106.45 (2009):
            19011-19016.
     """
-    sources = np.array(sources, dtype=np.int).reshape((-1,))
-    sinks = np.array(sinks, dtype=np.int).reshape((-1,))
+    sources = np.array(sources, dtype=int).reshape((-1,))
+    sinks = np.array(sinks, dtype=int).reshape((-1,))
 
     n_states = net_flux.shape[0]
 
@@ -95,10 +95,10 @@ def top_path(sources, sinks, net_flux):
     # nodes to check (the "queue")
     # going to use list.pop method so I can't keep it as an array
 
-    visited = np.zeros(n_states).astype(np.bool)
+    visited = np.zeros(n_states).astype(bool)
     # have we already checked this node?
 
-    previous_node = np.ones(n_states).astype(np.int) * -1
+    previous_node = np.ones(n_states).astype(int) * -1
     # what node was found before finding this one
 
     min_fluxes = np.ones(n_states) * -1 * np.inf

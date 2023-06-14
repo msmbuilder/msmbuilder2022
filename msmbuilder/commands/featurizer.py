@@ -153,7 +153,7 @@ class LandMarkRMSDFeaturizerCommand(FeaturizerCommand):
         return np.loadtxt(fn, dtype=int, ndmin=1)
 
     def _sigma_type(self, val):
-        return np.float(val)
+        return float(val)
 
 class SuperposeFeaturizerCommand(FeaturizerCommand):
     klass = SuperposeFeaturizer

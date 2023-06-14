@@ -194,7 +194,7 @@ class LigandContactFeaturizer(LigandFeaturizer):
 
         else:
             self.residue_pairs = ensure_type(np.asarray(contacts),
-                                        dtype=np.int, ndim=2, name='contacts',
+                                        dtype=int, ndim=2, name='contacts',
                                         shape=(None, 2), warn_on_cast=False)
             if not np.all((self.residue_pairs >= 0) *
                           (self.residue_pairs < self.reference_frame.n_residues)): 

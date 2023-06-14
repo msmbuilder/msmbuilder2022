@@ -67,7 +67,7 @@ def metzner_mcmc_slow(Z, n_samples, n_thin=1, random_state=None):
         # them like this. This ensures that this function and
         # `metzner_mcmc_fast` give _exactly_ the same sequence of transition
         # matricies, given the same random seed.
-        i, j = (random.rand(2) * n_states).astype(np.int)
+        i, j = (random.rand(2) * n_states).astype(int)
         
         sc = np.sum(K)
         if i == j:
