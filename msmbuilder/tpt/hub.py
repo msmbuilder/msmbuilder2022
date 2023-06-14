@@ -186,7 +186,7 @@ def _fraction_visited(source, sink, waypoint, tprob, for_committors,
     .. [1] Dickson & Brooks (2012), J. Chem. Theory Comput., 8, 3044-3052.
     """
 
-    fraction_visited = (np.float(tprob[source, :].dot(cond_committors)) /
-                        np.float(tprob[source, :].dot(for_committors)))
+    fraction_visited = (float(tprob[source, :].dot(cond_committors)) /
+                        float(tprob[source, :].dot(for_committors)))
 
     return fraction_visited

@@ -83,7 +83,7 @@ def test_4():
     except ImportError:
         n_params = scipy.misc.comb(n + 1, 2, exact=True)
     alpha = np.ones(n)
-    beta = (np.arange(n_params - n) + 1).astype(np.float)
+    beta = (np.arange(n_params - n) + 1).astype(float)
     counts = np.array([
         [10, 2, 0, 0],
         [1, 8, 2, 0],

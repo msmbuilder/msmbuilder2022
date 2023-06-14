@@ -272,7 +272,7 @@ class MarkovStateModel(BaseEstimator, _MappingTransformMixin,
             is_finite = np.isfinite(y)
             if not np.all(is_finite):
                 value = np.empty((y.shape[0], op.shape[1]))
-                value[is_finite, :] = np.take(op, y[is_finite].astype(np.int), axis=0)
+                value[is_finite, :] = np.take(op, y[is_finite].astype(int), axis=0)
                 value[~is_finite, :] = np.nan
             else:
                 value = np.take(op, y, axis=0)

@@ -161,26 +161,26 @@ def test_transform():
     v = model.transform([['a', 'b', 'c']])
     assert isinstance(v, list)
     assert len(v) == 1
-    assert v[0].dtype == np.int
+    assert v[0].dtype == int
     np.testing.assert_array_equal(v[0], [0, 1, 2])
 
     v = model.transform([['a', 'b', 'c', 'd']], 'clip')
     assert isinstance(v, list)
     assert len(v) == 1
-    assert v[0].dtype == np.int
+    assert v[0].dtype == int
     np.testing.assert_array_equal(v[0], [0, 1, 2])
 
     v = model.transform([['a', 'b', 'c', 'd']], 'fill')
     assert isinstance(v, list)
     assert len(v) == 1
-    assert v[0].dtype == np.float
+    assert v[0].dtype == float
     np.testing.assert_array_equal(v[0], [0, 1, 2, np.nan])
 
     v = model.transform([['a', 'a', 'SPLIT', 'b', 'b', 'b']], 'clip')
     assert isinstance(v, list)
     assert len(v) == 2
-    assert v[0].dtype == np.int
-    assert v[1].dtype == np.int
+    assert v[0].dtype == int
+    assert v[1].dtype == int
     np.testing.assert_array_equal(v[0], [0, 0])
     np.testing.assert_array_equal(v[1], [1, 1, 1])
 
@@ -193,26 +193,26 @@ def test_partial_transform():
     v = model.partial_transform(['a', 'b', 'c'])
     assert isinstance(v, list)
     assert len(v) == 1
-    assert v[0].dtype == np.int
+    assert v[0].dtype == int
     np.testing.assert_array_equal(v[0], [0, 1, 2])
 
     v = model.partial_transform(['a', 'b', 'c', 'd'], 'clip')
     assert isinstance(v, list)
     assert len(v) == 1
-    assert v[0].dtype == np.int
+    assert v[0].dtype == int
     np.testing.assert_array_equal(v[0], [0, 1, 2])
 
     v = model.partial_transform(['a', 'b', 'c', 'd'], 'fill')
     assert isinstance(v, np.ndarray)
     assert len(v) == 4
-    assert v.dtype == np.float
+    assert v.dtype == float
     np.testing.assert_array_equal(v, [0, 1, 2, np.nan])
 
     v = model.partial_transform(['a', 'a', 'SPLIT', 'b', 'b', 'b'], 'clip')
     assert isinstance(v, list)
     assert len(v) == 2
-    assert v[0].dtype == np.int
-    assert v[1].dtype == np.int
+    assert v[0].dtype == int
+    assert v[1].dtype == int
     np.testing.assert_array_equal(v[0], [0, 0])
     np.testing.assert_array_equal(v[1], [1, 1, 1])
 
