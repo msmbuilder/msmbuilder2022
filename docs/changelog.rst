@@ -12,6 +12,8 @@ API Changes
 New Features
 ~~~~~~~~~~~~
 
+- Added minimum variance cluster analysis (MVCA) for macrostating to 
+  msmbuilder.lumping
 - Added the Bayesian agglomerative clustering engine (BACE) for macrostating
   to msmbuilder.lumping
 
