@@ -7,6 +7,12 @@ from __future__ import print_function, division, absolute_import
 import numpy as np
 import collections
 
+try:
+    from collections import Sequence
+except ImportError:
+    # python3.10
+    from collections.abc import Sequence
+
 from ..base import BaseEstimator
 from ..utils import check_iter_of_sequences
 
@@ -52,7 +58,7 @@ class MultiSequencePreprocessingMixin(BaseEstimator):
         self.__lengths = [len(s) for s in sequences]
 
         # Indexing will fail on generic iterators
-        if not isinstance(sequences, collections.Sequence):
+        if not isinstance(sequences, Sequence):
             sequences = list(sequences)
 
         if len(sequences) > 0 and isinstance(sequences[0], np.ndarray):

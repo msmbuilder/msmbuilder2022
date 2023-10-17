@@ -6,11 +6,12 @@ from msmbuilder.featurizer import ContactFeaturizer
 from msmbuilder.featurizer import LogisticContactFeaturizer
 import mdtraj as md
 import itertools
+import pytest
 # numpy.testing.decorators removed in numpy >= 1.18
-try: 
-    from numpy.testing.decorators import skipif
-except ImportError:
-    from numpy.testing._private.decorators import skipif
+# try: 
+    # from numpy.testing.decorators import skipif
+# except ImportError:
+    # from numpy.testing._private.decorators import skipif
 
 def test_contacts():
     trajectories = MinimalFsPeptide().get_cached().trajectories
@@ -95,7 +96,8 @@ def test_binary_to_logistics():
     np.testing.assert_array_almost_equal(binaries[0], logistics[0] > 0.5)
 
 
-@skipif(True)
+# @skipif(True)
+@pytest.mark.skipif(True,reason='')
 def test_soft_min_contact_featurizer():
     # just get one frame for now
     traj = MinimalFsPeptide().get_cached().trajectories[0][0]

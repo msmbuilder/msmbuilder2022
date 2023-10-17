@@ -20,6 +20,9 @@ New Features
 Improvements
 ~~~~~~~~~~~~
 
+- Added pip install
+- Fixed dependency issue for python3.10
+- Fixed dependency issue for numpy
 - Added github action workflow for PR.
 - Fixed bugs in ``APM`` algorithm.
 

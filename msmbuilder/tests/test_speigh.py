@@ -4,11 +4,12 @@ import numpy as np
 import scipy.linalg
 from msmbuilder.decomposition._speigh import project
 from msmbuilder.decomposition._speigh import speigh, scdeflate
+import pytest
 # numpy.testing.decorators removed in numpy >= 1.18
-try:
-    from numpy.testing.decorators import skipif
-except ImportError:
-    from numpy.testing._private.decorators import skipif
+# try:
+    # from numpy.testing.decorators import skipif
+# except ImportError:
+    # from numpy.testing._private.decorators import skipif
 
 try:
     import cvxpy as cp
@@ -161,7 +162,8 @@ class Test_speigh_2(object):
         x_sp = x_sp / np.sqrt(np.sum(x_sp ** 2))
         np.testing.assert_array_almost_equal(v0, x_sp)
 
-    @skipif(not 'cvxpy' in sys.modules, 'CVXPY not installed')
+    # @skipif(not 'cvxpy' in sys.modules, 'CVXPY not installed')
+    @pytest.mark.skipif(not 'cvxpy' in sys.modules, reason='CVXPY not installed')
     def test_2(self):
         n = 4
         # build matrix with specified first generalized eigenvector
@@ -173,7 +175,8 @@ class Test_speigh_2(object):
             v2 = speigh(A, B, method=2, rho=rho)[1]
             np.testing.assert_array_almost_equal(v1, v1)
 
-    @skipif(not 'cvxpy' in sys.modules, 'CVXPY not installed')
+    # @skipif(not 'cvxpy' in sys.modules, 'CVXPY not installed')
+    @pytest.mark.skipif(not 'cvxpy' in sys.modules, reason='CVXPY not installed')
     def test_3(self):
         n = 10
         A = rand_sym(n, seed=1)
@@ -185,7 +188,8 @@ class Test_speigh_2(object):
         np.testing.assert_almost_equal(V1, V2)
 
 
-@skipif(not 'cvxpy' in sys.modules, 'CVXPY not installed')
+# @skipif(not 'cvxpy' in sys.modules, 'CVXPY not installed')
+@pytest.mark.skipif(not 'cvxpy' in sys.modules, reason='CVXPY not installed')
 def test_project():
     B = np.array([[4.805, 0.651, 0.611, -4.98, -1.448],
                   [0.651, 6.132, -1.809, 0.613, 4.838],

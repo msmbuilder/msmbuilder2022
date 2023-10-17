@@ -1,0 +1,9 @@
+[build-system]
+requires = ["setuptools", 
+        "wheel", 
+        "Cython~=0.29.36",
+        "numpy",
+        "mdtraj",
+        #"mdtraj @ https://files.pythonhosted.org/packages/88/12/ecbe28c87bc3df8c4880cc742923a6f40633ca076c8f44b03533dfce0b66/mdtraj-1.9.9-cp39-cp39-macosx_10_9_x86_64.whl",
+        ]
+build-backend = "setuptools.build_meta"
