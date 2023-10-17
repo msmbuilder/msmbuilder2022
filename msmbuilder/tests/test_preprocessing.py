@@ -1,9 +1,10 @@
 import numpy as np
+import pytest
 # numpy.testing.decorators removed in numpy >= 1.18
-try:
-    from numpy.testing.decorators import skipif
-except ImportError:
-    from numpy.testing._private.decorators import skipif
+# try:
+    # from numpy.testing.decorators import skipif
+# except ImportError:
+    # from numpy.testing._private.decorators import skipif
 
 try:
     from sklearn.preprocessing import (FunctionTransformer as
@@ -116,7 +117,8 @@ def test_binarizer_vs_sklearn():
     np.testing.assert_array_almost_equal(y_ref1, y1)
 
 
-@skipif(not HAVE_FT, 'this test requires sklearn >0.17.0')
+# @skipif(not HAVE_FT, 'this test requires sklearn >0.17.0')
+@pytest.mark.skipif(not HAVE_FT, reason='this test requires sklearn >0.17.0')
 def test_functiontransformer_vs_sklearn():
     # Compare msmbuilder.preprocessing.FunctionTransformer
     # with sklearn.preprocessing.FunctionTransformer
@@ -149,7 +151,8 @@ def test_imputer_vs_sklearn():
     np.testing.assert_array_almost_equal(y_ref1, y1)
 
 # kernelcenterer class should be modified, fit() is not traj, but kernel matrix
-@skipif(True)  
+# @skipif(True)  
+@pytest.mark.skipif(True,reason='kernelcenterer class should be modified, fit() is not traj, but kernel matrix')
 def test_kernelcenterer_vs_sklearn():
     # Compare msmbuilder.preprocessing.KernelCenterer
     # with sklearn.preprocessing.KernelCenterer
@@ -198,7 +201,8 @@ def test_multilabelbinarizer_vs_sklearn():
     np.testing.assert_array_almost_equal(y_ref1, y1)
 
 
-@skipif(not HAVE_MMS, 'this test requires sklearn >0.17.0')
+# @skipif(not HAVE_MMS, 'this test requires sklearn >0.17.0')
+@pytest.mark.skipif(not HAVE_MMS, reason='this test requires sklearn >0.17.0')
 def test_minmaxscaler_vs_sklearn():
     # Compare msmbuilder.preprocessing.MinMaxScaler
     # with sklearn.preprocessing.MinMaxScaler
@@ -215,7 +219,8 @@ def test_minmaxscaler_vs_sklearn():
     np.testing.assert_array_almost_equal(y_ref1, y1)
 
 
-@skipif(not HAVE_MAS, 'this test requires sklearn >0.17.0')
+# @skipif(not HAVE_MAS, 'this test requires sklearn >0.17.0')
+@pytest.mark.skipif(not HAVE_MAS, reason='this test requires sklearn >0.17.0')
 def test_maxabsscaler_vs_sklearn():
     # Compare msmbuilder.preprocessing.MaxAbsScaler
     # with sklearn.preprocessing.MaxAbsScaler
@@ -248,7 +253,8 @@ def test_normalizer_vs_sklearn():
     np.testing.assert_array_almost_equal(y_ref1, y1)
 
 
-@skipif(not HAVE_RS, 'this test requires sklearn >0.17.0')
+# @skipif(not HAVE_RS, 'this test requires sklearn >0.17.0')
+@pytest.mark.skipif(not HAVE_RS, reason='this test requires sklearn >0.17.0')
 def test_robustscaler_vs_sklearn():
     # Compare msmbuilder.preprocessing.RobustScaler
     # with sklearn.preprocessing.RobustScaler
@@ -265,7 +271,8 @@ def test_robustscaler_vs_sklearn():
     np.testing.assert_array_almost_equal(y_ref1, y1)
 
 
-@skipif(not HAVE_SS, 'this test requires sklearn >0.17.0')
+# @skipif(not HAVE_SS, 'this test requires sklearn >0.17.0')
+@pytest.mark.skipif(not HAVE_SS, reason='this test requires sklearn >0.17.0')
 def test_standardscaler_vs_sklearn():
     # Compare msmbuilder.preprocessing.StandardScaler
     # with sklearn.preprocessing.StandardScaler

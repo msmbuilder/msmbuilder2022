@@ -8,11 +8,12 @@ from mdtraj.testing import eq
 from scipy.stats import vonmises as vm
 import itertools
 import inspect
+import pytest
 # numpy.testing.decorators removed in numpy >= 1.18
-try:
-    from numpy.testing.decorators import skipif
-except ImportError:
-    from numpy.testing._private.decorators import skipif
+# try:
+    # from numpy.testing.decorators import skipif
+# except ImportError:
+    # from numpy.testing._private.decorators import skipif
 
 from msmbuilder.example_datasets import MinimalFsPeptide
 from msmbuilder.feature_selection import FeatureSelector
@@ -181,7 +182,8 @@ def test_ContactFeaturizer_describe_features():
                                                scheme=scheme)
         assert (features[0][:, f_index] == feature_value.flatten()).all()
 
-@skipif(True)
+# @skipif(True)
+@pytest.mark.skipif(True,reason='')
 def test_soft_min_ContactFeaturizer_describe_features():
     scheme = np.random.choice(['closest','closest-heavy'])
     soft_min = True
