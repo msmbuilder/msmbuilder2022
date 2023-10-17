@@ -3,14 +3,15 @@ from __future__ import print_function
 import mdtraj as md
 import numpy as np
 from mdtraj.testing import eq
+import pytest
 
 from msmbuilder.cluster import APM
 from msmbuilder.example_datasets import FsPeptide
 # numpy.testing.decorators removed in numpy >= 1.18
-try:
-    from numpy.testing.decorators import skipif
-except ImportError:
-    from numpy.testing._private.decorators import skipif
+# try:
+    # from numpy.testing.decorators import skipif
+# except ImportError:
+    # from numpy.testing._private.decorators import skipif
 
 rs = np.random.RandomState(42)
 
@@ -48,7 +49,8 @@ def test_euclidean_10000():
     labels2 = m2.fit([data]).MacroAssignments_
     eq(labels1[0], labels2[0])
 
-@skipif(True)  # exceed maximum recursion depth
+# @skipif(True)  # exceed maximum recursion depth
+@pytest.mark.skipif(True,reason='exceed maximum recursion depth')
 def test_rmsd():
     # test for predict using euclidean distance
     sys.setrecursionlimit(1500) # address recursion error
