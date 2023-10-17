@@ -9,12 +9,16 @@ on:
       - main
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
+  build-code:
+    runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 5
       matrix:
-        python-version: ["3.7","3.8","3.9"]
+        python-version: ["3.8","3.9","3.10"]
+        os: 
+          - macOS-latest
+          - ubuntu-latest
+          - windows-latest
     defaults:
       run:
         shell: bash -el {0}
