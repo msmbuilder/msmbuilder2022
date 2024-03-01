@@ -8,6 +8,7 @@ import shlex
 import shutil
 import subprocess
 import tempfile
+import pytest
 
 import hmmlearn.hmm
 import mdtraj as md
@@ -17,6 +18,10 @@ from mdtraj.testing import eq
 from msmbuilder.dataset import dataset
 from msmbuilder.example_datasets import get_data_home, FsPeptide
 from msmbuilder.utils import load
+
+import sys
+if not sys.version_info < (3, 11):
+    pytest.skip("skipping command tests for python>=3.11", allow_module_level=True)
 
 DATADIR = HMM = None
 
