@@ -19,9 +19,10 @@ from msmbuilder.dataset import dataset
 from msmbuilder.example_datasets import get_data_home, FsPeptide
 from msmbuilder.utils import load
 
-#import sys
-#if not sys.version_info < (3, 11):
-    #pytest.skip("skipping command tests for python>=3.11", allow_module_level=True)
+# Compatibility issue (caused by FullArgSpec) for python3.11 solved.
+# import sys
+# if not sys.version_info < (3, 11):
+    # pytest.skip("skipping command tests for python>=3.11", allow_module_level=True)
 
 DATADIR = HMM = None
 
@@ -85,7 +86,7 @@ def shell(str):
         print(e.output)
         raise
 
-
+# Potentially may fail ("Fatal Python error: Illegal instruction") in macos: re-run or skip.
 def test_atomindices_1():
     # fn = get_mdtraj_fn('2EQQ.pdb')
     # t = md.load(fn)
