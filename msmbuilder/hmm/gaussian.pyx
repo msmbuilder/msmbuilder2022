@@ -154,7 +154,8 @@ cdef public class GaussianHMM[object GaussianHMMObject, type GaussianHMMType]:
          'n_hotstart', 'init_algo'],
           None, None,
           [10, 10, 10, 1e-2, 1e-2, 'mle', 1e-3, 1, None, False,
-          'all', 'kmeans']
+          'all', 'kmeans'],
+          None, None, None
         )
 
     @property

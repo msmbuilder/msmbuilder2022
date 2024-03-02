@@ -136,7 +136,8 @@ cdef public class VonMisesHMM[object VonMisesHMMObject, type VonMisesHMMType]:
         return FullArgSpec(
         ['self', 'n_states', 'n_init', 'n_iter', 'thresh', 'reversible_type', 'random_state'],
           None, None,
-          [10, 10, 1e-2, 1e-2, 'mle', None]
+          [10, 10, 1e-2, 1e-2, 'mle', None],
+          None, None, None
         )
 
     @property
