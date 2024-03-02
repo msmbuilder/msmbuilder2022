@@ -8,7 +8,14 @@ from msmbuilder.msm import implied_timescales
 from msmbuilder.utils import param_sweep
 
 
-def test_both():
+# Error here for macos python>=311: A task has failed to un-serialize. Please ensure that the arguments of the function are all picklable.
+import sys
+if sys.platform == "darwin" and not sys.version_info < (3, 11):
+    N_JOBS = 1
+else:
+    N_JOBS = 2
+
+def test_both(n_jobs=N_JOBS):
     sequences = [np.random.randint(20, size=1000) for _ in range(10)]
     lag_times = [1, 5, 10]
 
@@ -22,9 +29,9 @@ def test_both():
     timescales_ref = [m.timescales_ for m in models_ref]
 
     model = MarkovStateModel(reversible_type='mle', lag_time=1, n_timescales=10)
-    models = param_sweep(model, sequences, {'lag_time': lag_times}, n_jobs=2)
+    models = param_sweep(model, sequences, {'lag_time': lag_times}, n_jobs=n_jobs)
     timescales = implied_timescales(sequences, lag_times, msm=model,
-                                    n_timescales=10, n_jobs=2)
+                                    n_timescales=10, n_jobs=n_jobs)
 
     print(timescales)
     print(timescales_ref)
@@ -38,7 +45,7 @@ def test_both():
         npt.assert_array_almost_equal(timescales_ref[i], timescales[i])
 
 
-def test_multi_params():
+def test_multi_params(n_jobs=N_JOBS):
     msm = MarkovStateModel()
     param_grid = {
         'lag_time': [1, 2, 3],
@@ -46,7 +53,7 @@ def test_multi_params():
     }
 
     sequences = np.random.randint(20, size=(10, 1000))
-    models = param_sweep(msm, sequences, param_grid, n_jobs=2)
+    models = param_sweep(msm, sequences, param_grid, n_jobs=n_jobs)
     assert len(models) == 6
 
     # I don't know what the order should be, so I'm just going

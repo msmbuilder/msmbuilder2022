@@ -18,6 +18,10 @@ import msmbuilder.msm
 # except ImportError:
     # from numpy.testing._private.decorators import skipif
 
+# Compatibility issue (caused by FullArgSpec) for python3.11 solved.
+# import sys
+# if not sys.version_info < (3, 11):
+    # pytest.skip("skipping command tests for python>=3.11", allow_module_level=True)
 
 def get_commands_from_helptext():
     raw = subprocess.check_output(['msmb', '-h'], universal_newlines=True)
