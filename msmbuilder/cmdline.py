@@ -573,7 +573,7 @@ def _shim_argspec(argspec):
             self.parameters = OrderedDict()
 
     sig = Signature()
-    args, _, _, defaults = argspec
+    args, _, _, defaults, _, _, _ = argspec
     for arg in args:
         sig.parameters[arg] = Parameter(arg, Parameter.POSITIONAL_OR_KEYWORD)
 
