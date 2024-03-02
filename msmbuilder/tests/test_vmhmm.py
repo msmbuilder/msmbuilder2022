@@ -103,7 +103,7 @@ def test_2_state():
         validate_timeseries(means, kappas, transmat, model, 0.1, 0.5, 0.05)
         assert abs(model.fit_logprob_[-1] - model.score(X)) < 0.5
 
-
+# Potentially may fail (assertion error) in macos: re-run or skip.
 def test_3_state():
     transmat = np.array([[0.2, 0.3, 0.5], [0.4, 0.4, 0.2], [0.8, 0.2, 0.0]])
     means = np.array([[0.0], [2.0], [4.0]])
