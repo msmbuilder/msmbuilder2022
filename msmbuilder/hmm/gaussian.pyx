@@ -141,8 +141,13 @@ cdef public class GaussianHMM[object GaussianHMMObject, type GaussianHMMType]:
         # interact correctly with the `inspect` module.
 
         # any changes to the signature of __init__ need to be reflected here.
-        from inspect import ArgSpec
-        return ArgSpec(
+        # from inspect import ArgSpec
+        try:
+            from inspect import FullArgSpec
+        except ImportError:
+            # Python ≤3.10
+            from inspect import ArgSpec as FullArgSpec
+        return FullArgSpec(
         ['self', 'n_states', 'n_init', 'n_iter', 'n_lqa_iter',
          'fusion_prior', 'thresh', 'reversible_type', 'vars_prior',
          'vars_weight', 'random_state', 'timing',

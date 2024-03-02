@@ -127,8 +127,13 @@ cdef public class VonMisesHMM[object VonMisesHMMObject, type VonMisesHMMType]:
         # interact correctly with the `inspect` module.
 
         # any changes to the signature of __init__ need to be reflected here.
-        from inspect import ArgSpec
-        return ArgSpec(
+        #from inspect import ArgSpec
+        try:
+            from inspect import FullArgSpec
+        except ImportError:
+            # Python ≤3.10
+            from inspect import ArgSpec as FullArgSpec
+        return FullArgSpec(
         ['self', 'n_states', 'n_init', 'n_iter', 'thresh', 'reversible_type', 'random_state'],
           None, None,
           [10, 10, 1e-2, 1e-2, 'mle', None]
