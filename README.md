@@ -6,8 +6,19 @@ home: https://github.com/msmbuilder/msmbuilder
 
 Installation
 ------------
+Now `msmbuilder2022` is suggested to be installed with a local clone:
 
-The preferred installation mechanism for `msmbuilder2022` is with `conda`:
+```bash
+git clone https://github.com/msmbuilder/msmbuilder2022.git
+```
+
+```bash
+python -m pip install ./msmbuilder2022
+```
+
+We will enable `pip install` from  `pypi` in our next formal release soon!
+
+The preferred installation mechanism for `msmbuilder2022` is with `conda`: (depreciated)
 
 ```bash
 $ conda install -c conda-forge testmsm
