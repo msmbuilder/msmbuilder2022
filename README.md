@@ -18,15 +18,13 @@ python -m pip install ./msmbuilder2022
 
 We will enable `pip install` from  `pypi` in our next formal release soon!
 
+
 The preferred installation mechanism for `msmbuilder2022` is with `conda`: (depreciated)
 
 ```bash
 $ conda install -c conda-forge testmsm
 ```
 
-Now, the intallation package name is called testmsm.
-
-In the future, msmbuilder2022 conda-forge package will be available.
 
 MSMBuilder
 ==========
