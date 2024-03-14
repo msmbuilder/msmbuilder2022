@@ -46,7 +46,8 @@ jobs:
     - name: Test with pytest
       run: |
         # conda install -yq -c ${CONDA_PREFIX}/conda-bld/ msmbuilder2022
-        conda install -yq pytest numdifftools hmmlearn nose
+        pip install pytest==8.0.2
+        conda install -yq numdifftools hmmlearn nose
         mkdir ../../pkgs
         cp -r msmbuilder/tests ../../pkgs
         cd ../../pkgs
