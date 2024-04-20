@@ -1,8 +1,9 @@
 msmbuilder2022
 ==========
-msmbuilder2022 is based on msmbuilder-3.8.0
+msmbuilder2022 is based on msmbuilder-3.8.0. msmbuilder2022 is developed and maintained by Xuhui Huang's group at University of Wisconsin-Madison. Mr. Bojun Liu is the main contact for msmbuilder2022.
 
 home: https://github.com/msmbuilder/msmbuilder
+
 
 Installation
 ------------
