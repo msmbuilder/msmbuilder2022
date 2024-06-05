@@ -7,7 +7,12 @@
 #ifndef MIXTAPE_CPU_LOGSUMEXP_H
 #define MIXTAPE_CPU_LOGSUMEXP_H
 
+#ifdef __x86_64__
 #include <emmintrin.h>
+#else
+#include "sse2neon.h"
+#endif
+
 #include "float.h"
 #include <stdio.h>
 #include <math.h>

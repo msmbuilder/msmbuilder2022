@@ -29,7 +29,12 @@
   (this is the zlib license)
 */
 
+#ifdef __x86_64__
 #include <xmmintrin.h>
+#else
+#include "sse2neon.h"
+#endif
+
 
 /* yes I know, the top of this file is quite ugly */
 
@@ -45,7 +50,8 @@
 typedef __m128 v4sf;  // vector of 4 float (sse1)
 
 #ifdef USE_SSE2
-# include <emmintrin.h>
+#ifdef __x86_64__
+#include <emmintrin.h>
 typedef __m128i v4si; // vector of 4 int (sse2)
 #else
 typedef __m64 v2si;   // vector of 2 int (mmx)
