@@ -52,6 +52,7 @@ typedef __m128 v4sf;  // vector of 4 float (sse1)
 #ifdef USE_SSE2
 #ifdef __x86_64__
 #include <emmintrin.h>
+#endif
 typedef __m128i v4si; // vector of 4 int (sse2)
 #else
 typedef __m64 v2si;   // vector of 2 int (mmx)
