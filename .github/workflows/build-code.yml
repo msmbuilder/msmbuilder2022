@@ -28,10 +28,9 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v3
       with:
         auto-activate-base: true
-        activate-environment: ""
         auto-update-conda: true
         python-version: ${{ matrix.python-version }}
-        # activate-environment: test
+        activate-environment: test
     - name: Install required packages 
       run: |
         conda config --add channels conda-forge 
