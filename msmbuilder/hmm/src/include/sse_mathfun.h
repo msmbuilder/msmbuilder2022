@@ -29,7 +29,7 @@
   (this is the zlib license)
 */
 
-#if defined(_M_IX86) || defined(_M_X64) || (defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
+#if defined(_M_IX86) || defined(_M_X64) || defined(__x86_64__) || defined(__i386) || (defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
 #include <xmmintrin.h>
 #else
 #include "sse2neon.h"
@@ -50,7 +50,7 @@
 typedef __m128 v4sf;  // vector of 4 float (sse1)
 
 #ifdef USE_SSE2
-#if defined(_M_IX86) || defined(_M_X64) || (defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
+#if defined(_M_IX86) || defined(_M_X64) || defined(__x86_64__) || defined(__i386) || (defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
 #include <emmintrin.h>
 #endif
 typedef __m128i v4si; // vector of 4 int (sse2)

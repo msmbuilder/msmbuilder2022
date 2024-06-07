@@ -7,7 +7,7 @@
 #ifndef MIXTAPE_CPU_LOGSUMEXP_H
 #define MIXTAPE_CPU_LOGSUMEXP_H
 
-#if defined(_M_IX86) || defined(_M_X64) || (defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
+#if defined(_M_IX86) || defined(_M_X64) || defined(__x86_64__) || defined(__i386) || (defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
 #include <emmintrin.h>
 #else
 #include "sse2neon.h"
