@@ -211,7 +211,7 @@ setup(name='msmbuilder2022',
       },
       install_requires=[
           'numpy',
-          'mdtraj',
+          'mdtraj==1.9.9',
           'scikit-learn',
           'pandas',
           'fastcluster',

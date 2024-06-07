@@ -24,17 +24,19 @@ jobs:
         shell: bash -el {0}
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: conda-incubator/setup-miniconda@v2
+    - uses: actions/checkout@v4
+    - uses: conda-incubator/setup-miniconda@v3
       with:
+        auto-activate-base: true
         auto-update-conda: true
         python-version: ${{ matrix.python-version }}
-        # activate-environment: test
+        activate-environment: test
     - name: Install required packages 
       run: |
         conda config --add channels conda-forge 
         # conda install -yq conda-build jinja2 conda-verify
         conda install -yq zlib
+        conda install h5py
         python -m pip install --upgrade pip
         # conda update conda-build
     # - name: Conda build    
