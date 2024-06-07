@@ -16,7 +16,7 @@ jobs:
       matrix:
         python-version: ["3.9","3.10","3.11"]
         os: 
-          - macOS-latest
+          - macOS-13
           - ubuntu-latest
           - windows-latest
     defaults:
