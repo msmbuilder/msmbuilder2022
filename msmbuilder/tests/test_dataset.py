@@ -3,10 +3,9 @@ from __future__ import print_function, absolute_import, division
 import os
 import shutil
 import tempfile
-
+import re
 import numpy as np
 from mdtraj.testing import get_fn
-from nose.tools import assert_raises, assert_raises_regexp
 # sklearn.externals.joblib is removed in scikit-learn v0.23
 try:
     from joblib import Parallel, delayed
@@ -34,7 +33,13 @@ def test_1():
         assert set(os.listdir(path)) == set(('PROVENANCE.txt', '00000000.npy'))
         np.testing.assert_array_equal(ds[0], X)
 
-        assert_raises(IndexError, lambda: ds[1])
+        
+        try:
+            _ = ds[1]
+        except IndexError:
+            pass
+        else:
+            assert False
         assert len(ds) == 1
 
         Y = np.zeros((10, 1))
@@ -168,9 +173,13 @@ def test_hdf5_3():
 
 
 def test_union_no_longer_exists():
-    with assert_raises_regexp(ValueError,
-                              r".*[Uu]se msmbuilder\.featurizer\.FeatureUnion.*"):
+    try:
         mds = dataset(['ds1.h5', 'ds2.h5'], fmt='hdf5-union')
+    except ValueError as e:
+        assert re.match(r".*[Uu]se msmbuilder\.featurizer\.FeatureUnion.*", repr(e))
+    else:
+        assert False
+        
 
 
 def test_order_1():
