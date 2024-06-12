@@ -1,12 +1,13 @@
 from __future__ import print_function, absolute_import
 import os
 import sys
-import imp
+import importlib.util
 import json
 import string
 import shutil
 import subprocess
 import tempfile
+
 from distutils.dep_util import newer_group
 from distutils.core import Extension
 from distutils.errors import DistutilsExecError
@@ -33,7 +34,7 @@ def find_packages():
 def check_dependencies(dependencies):
     def module_exists(dep):
         try:
-            imp.find_module(dep)
+            importlib.util.find_spec(dep)
             return True
         except ImportError:
             return False
