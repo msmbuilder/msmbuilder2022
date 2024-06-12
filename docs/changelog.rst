@@ -20,7 +20,7 @@ New Features
 Improvements
 ~~~~~~~~~~~~
 
-- Fixed dependency issue for python3.11 and added python3.11 in build-code workflow
+- Fixed dependency issue for python3.11/12 and added python3.11/12 in build-code workflow
 - Added pip install
 - Fixed dependency issue for python3.10
 - Fixed dependency issue for numpy
