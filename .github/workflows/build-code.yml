@@ -4,27 +4,46 @@ on:
   push:
     branches:
       - main
+    # ignore changes to docs
+    paths-ignore:
+      - ./docs/*
   pull_request:
     branches:
       - main
+    # ignore changes to docs
+    paths-ignore:
+      - ./docs/*
 
 jobs:
   build-code:
     runs-on: ${{ matrix.os }}
     strategy:
-      max-parallel: 5
+      max-parallel: 6
       matrix:
         python-version: ["3.9","3.10","3.11", "3.12"]
         os: 
           - macOS-latest
           - ubuntu-latest
           - windows-latest
+        include:
+        - os: ubuntu-latest
+          path: ~/.cache/pip
+        - os: macos-latest
+          path: ~/Library/Caches/pip
+        - os: windows-latest
+          path: ~\AppData\Local\pip\Cache
     defaults:
       run:
         shell: bash -el {0}
 
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/cache@v3
+      with:
+        path: ${{ matrix.path }}
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - uses: conda-incubator/setup-miniconda@v3
       with:
         auto-activate-base: true
