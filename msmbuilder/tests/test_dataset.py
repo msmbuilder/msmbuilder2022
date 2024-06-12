@@ -33,14 +33,8 @@ def test_1():
         assert set(os.listdir(path)) == set(('PROVENANCE.txt', '00000000.npy'))
         np.testing.assert_array_equal(ds[0], X)
 
-        
-        try:
+        with np.testing.assert_raises(IndexError):
             _ = ds[1]
-        except IndexError:
-            pass
-        else:
-            assert False
-        assert len(ds) == 1
 
         Y = np.zeros((10, 1))
         Z = np.ones((2, 2))
@@ -173,12 +167,8 @@ def test_hdf5_3():
 
 
 def test_union_no_longer_exists():
-    try:
+    with np.testing.assert_raises_regex(ValueError, r".*[Uu]se msmbuilder\.featurizer\.FeatureUnion.*"):
         mds = dataset(['ds1.h5', 'ds2.h5'], fmt='hdf5-union')
-    except ValueError as e:
-        assert re.match(r".*[Uu]se msmbuilder\.featurizer\.FeatureUnion.*", repr(e))
-    else:
-        assert False
         
 
 

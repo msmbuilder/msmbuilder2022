@@ -78,13 +78,8 @@ def test_uneven_n():
             # Uneven number of trajs!
 
             fu = FeatureUnion(normalize=False)
-            try:
+            with np.testing.assert_raises(ValueError):
                 fu.fit((ds1, ds2))
-            except ValueError:
-                pass
-            else:
-                assert False
-
 
 def test_uneven_len():
     with tempdir():
@@ -99,12 +94,8 @@ def test_uneven_len():
             # Uneven length!
 
             fu = FeatureUnion(normalize=False)
-            try:
+            with np.testing.assert_raises(ValueError):
                 fu.fit_transform((ds1, ds2))
-            except ValueError:
-                pass
-            else:
-                assert False
 
 
 def test_uneven_width():
@@ -116,9 +107,5 @@ def test_uneven_width():
     ds2[1] = np.random.randn(5, 3)
 
     fu = FeatureUnion(normalize=True)
-    try:
+    with np.testing.assert_raises(ValueError):
         fu.fit_transform((ds1, ds2))
-    except ValueError:
-        pass
-    else:
-        assert False
