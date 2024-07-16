@@ -18,7 +18,8 @@ import numpy as np
 
 from . import committors, conditional_committors
 
-from mdtraj.utils.six.moves import xrange
+# xrange is just range in python 3
+# from mdtraj.utils.six.moves import xrange
 import itertools
 
 __all__ = ['fraction_visited', 'hub_scores']

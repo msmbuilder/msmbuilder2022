@@ -20,7 +20,8 @@ note that we are using ergodic Markov Chains.
 from __future__ import print_function, division, absolute_import
 import numpy as np
 import scipy
-from mdtraj.utils.six.moves import xrange
+# xrange is just range in python 3
+# from mdtraj.utils.six.moves import xrange
 import copy
 from msmbuilder.msm.core import _solve_msm_eigensystem
 
@@ -214,7 +215,7 @@ def _mfpts(tprob, populations, sinks, lag_time):
 
         # mfpt[i,j] = (fund_matrix[j,j] - fund_matrix[i,j]) / populations[j]
         mfpts = fund_matrix * -1
-        for j in xrange(n_states):
+        for j in range(n_states):
             mfpts[:, j] += fund_matrix[j, j]
             mfpts[:, j] /= populations[j]
 
