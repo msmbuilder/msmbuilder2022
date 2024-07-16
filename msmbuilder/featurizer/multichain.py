@@ -9,7 +9,6 @@ import warnings
 
 import mdtraj as md
 from mdtraj.utils import ensure_type
-from mdtraj.utils.six import string_types
 import numpy as np
 import itertools
 import warnings
@@ -177,7 +176,7 @@ class LigandContactFeaturizer(LigandFeaturizer):
         # this is really similar to mdtraj/contact.py, but ensures that
         # md.compute_contacts  is always seeing an array of exactly the
         # contacts we want to specify
-        if isinstance(contacts, string_types):
+        if isinstance(contacts, str):
             if contacts.lower() != 'all':
                 raise ValueError('({}) is not a valid contacts specifier'.format(contacts.lower()))
 
