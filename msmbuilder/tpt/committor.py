@@ -34,8 +34,6 @@ References
 """
 from __future__ import print_function, division, absolute_import
 import numpy as np
-# xrange is just range in python 3
-# from mdtraj.utils.six.moves import xrange
 
 __all__ = ['committors', 'conditional_committors',
            '_committors', '_conditional_committors']

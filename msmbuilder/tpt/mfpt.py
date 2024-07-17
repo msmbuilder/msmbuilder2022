@@ -20,8 +20,6 @@ note that we are using ergodic Markov Chains.
 from __future__ import print_function, division, absolute_import
 import numpy as np
 import scipy
-# xrange is just range in python 3
-# from mdtraj.utils.six.moves import xrange
 import copy
 from msmbuilder.msm.core import _solve_msm_eigensystem
 
