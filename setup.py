@@ -220,7 +220,7 @@ setup(name='msmbuilder2022',
           'tables',
           'numpydoc',
           'six',
-          'scipy=1.13.1',
+          'scipy==1.13.1',
           'pyhmc @ git+https://github.com/bojunliu0818/pyhmc.git@bojunliu0818-dev',
       ],
       entry_points={'console_scripts':
