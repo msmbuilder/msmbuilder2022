@@ -35,8 +35,6 @@ References
 from __future__ import print_function, division, absolute_import
 import numpy as np
 
-from mdtraj.utils.six.moves import xrange
-
 __all__ = ['committors', 'conditional_committors',
            '_committors', '_conditional_committors']
 
@@ -190,7 +188,7 @@ def _conditional_committors(source, sink, waypoint, tprob):
     # permute the transition matrix into cannonical form - send waypoint the the
     # last row, and source + sink to the end after that
     Bsink_indices = [source, sink, waypoint]
-    perm = np.array([i for i in xrange(n_states) if i not in Bsink_indices],
+    perm = np.array([i for i in range(n_states) if i not in Bsink_indices],
                     dtype=int)
     perm = np.concatenate([perm, Bsink_indices])
     permuted_tprob = tprob[perm, :][:, perm]

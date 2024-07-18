@@ -9,7 +9,6 @@ import warnings
 
 import mdtraj as md
 from mdtraj.utils import ensure_type
-from mdtraj.utils.six import string_types
 import numpy as np
 import itertools
 import warnings
@@ -170,14 +169,15 @@ class LigandContactFeaturizer(LigandFeaturizer):
 
     def _get_contact_pairs(self, contacts):
         if self.scheme=='ca':
-            if not any(a for a in self.reference_frame.top.chain(ligand_chain).atoms
+            # possible error here with "ligand_chain" from no where, change to self.ligand_chain
+            if not any(a for a in self.reference_frame.top.chain(self.ligand_chain).atoms
                        if a.name.lower() == 'ca'):
                 raise ValueError("Bad scheme: the ligand has no alpha carbons")
 
         # this is really similar to mdtraj/contact.py, but ensures that
         # md.compute_contacts  is always seeing an array of exactly the
         # contacts we want to specify
-        if isinstance(contacts, string_types):
+        if isinstance(contacts, str):
             if contacts.lower() != 'all':
                 raise ValueError('({}) is not a valid contacts specifier'.format(contacts.lower()))
 

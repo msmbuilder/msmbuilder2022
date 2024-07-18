@@ -18,7 +18,6 @@ import numpy as np
 
 from . import committors, conditional_committors
 
-from mdtraj.utils.six.moves import xrange
 import itertools
 
 __all__ = ['fraction_visited', 'hub_scores']
@@ -115,7 +114,7 @@ def hub_scores(msm, waypoints=None):
     if isinstance(waypoints, int):
         waypoints = [waypoints]
     elif waypoints is None:
-        waypoints = xrange(n_states)
+        waypoints = range(n_states)
     elif not (isinstance(waypoints, list) or
               isinstance(waypoints, np.ndarray)):
         raise ValueError("waypoints (%s) must be an int, a list, or None" %
@@ -123,7 +122,7 @@ def hub_scores(msm, waypoints=None):
 
     hub_scores = []
     for waypoint in waypoints:
-        other_states = (i for i in xrange(n_states) if i != waypoint)
+        other_states = (i for i in range(n_states) if i != waypoint)
 
         # calculate the hub score for this waypoint
         hub_score = 0.0

@@ -1,7 +1,6 @@
 import hashlib
 import itertools
 import numpy as np
-from six.moves import xrange
 
 
 def iterate_tracker(maxiter, max_nc, verbose=False):
@@ -12,7 +11,7 @@ def iterate_tracker(maxiter, max_nc, verbose=False):
     last_hash_count = 0
     arr = yield
 
-    for i in xrange(maxiter):
+    for i in range(maxiter):
         arr = yield i
         if arr is not None:    
             hsh = hashlib.sha1(arr.view(np.uint8)).hexdigest()
