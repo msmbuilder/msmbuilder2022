@@ -186,7 +186,7 @@ class tICA(BaseEstimator, TransformerMixin):
             raise RuntimeError('correlation matrix is not symmetric')
 
         vals, vecs = scipy.linalg.eigh(lhs, b=rhs,
-            eigvals=(self.n_features-self.n_components, self.n_features-1))
+            subset_by_index=[self.n_features-self.n_components, self.n_features-1])
 
         # sort in order of decreasing value
         ind = np.argsort(vals)[::-1]

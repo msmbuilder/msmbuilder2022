@@ -124,7 +124,7 @@ def speigh(double[:, ::1] A, double[:, ::1] B, double rho, double eps=1e-6,
     cdef double[::1] b = np.empty(N)
     # Initialize solver from dominant generalized eigenvector (unregularized
     # solution)
-    x = scipy.linalg.eigh(A, B, eigvals=(N-1, N-1))[1][:,0]
+    x = scipy.linalg.eigh(A, B, subset_by_index=[N-1, N-1])[1][:,0]
 
     cdef double[::1] B_eigvals
     cdef double[:, ::1] B_eigvecs
@@ -182,7 +182,7 @@ def speigh(double[:, ::1] A, double[:, ::1] B, double rho, double eps=1e-6,
         u = Ak[0,0] / Bk[0,0]
     else:
         gevals, gevecs = scipy.linalg.eigh(
-            Ak, Bk, eigvals=(Ak.shape[0]-1, Ak.shape[0]-1))
+            Ak, Bk, subset_by_index=[Ak.shape[0]-1, Ak.shape[0]-1])
         # Usually slower to use sparse linear algebra here
         # gevals, gevecs = scipy.sparse.linalg.eigsh(
         #     A=Ak, M=Bk, k=1, v0=x[mask], which='LA')
