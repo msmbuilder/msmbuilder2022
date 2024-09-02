@@ -68,7 +68,7 @@ jobs:
       run: |
         # conda install -yq -c ${CONDA_PREFIX}/conda-bld/ msmbuilder2022
         conda install -yq numdifftools hmmlearn
-        pip install pytest==8.0.2
+        pip install pytest==8.1.1
         mkdir ../../pkgs
         cp -r msmbuilder/tests ../../pkgs
         cd ../../pkgs

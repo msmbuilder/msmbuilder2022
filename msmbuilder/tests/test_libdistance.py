@@ -12,7 +12,7 @@ VECTOR_METRICS = ("euclidean", "sqeuclidean", "cityblock", "chebyshev",
                   "canberra", "braycurtis", "hamming", "jaccard", "cityblock")
 
 
-def setup():
+def setup_module():
     global X_double, Y_double, X_float, Y_float, X_rmsd, Y_rmsd, X_indices
     X_double = random.randn(10, 2)
     Y_double = random.randn(3, 2)
