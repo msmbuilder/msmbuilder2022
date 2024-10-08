@@ -1,0 +1,6 @@
+ignore:
+  - "msmbuilder/tests"
+
+comment:
+  layout: "reach, diff, flags, files" 
+
