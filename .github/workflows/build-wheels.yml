@@ -1,0 +1,83 @@
+name: Build wheels
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 6
+      matrix:
+        python-version: ["3.9","3.10","3.11", "3.12"]
+        os: 
+          - macOS-latest
+          - ubuntu-latest
+          - windows-latest        
+        include:
+        - os: ubuntu-latest
+          path: ~/.cache/pip
+        - os: macos-latest
+          path: ~/Library/Caches/pip
+        - os: windows-latest
+          path: ~\AppData\Local\pip\Cache
+    defaults:
+      run:
+        shell: bash -el {0}          
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ${{ matrix.path }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-activate-base: true
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
+          activate-environment: test
+      - name: Install required packages 
+        run: |
+          conda config --add channels conda-forge 
+          # conda install -yq conda-build jinja2 conda-verify
+          conda install -yq zlib
+          conda install h5py
+          python -m pip install --upgrade pip
+      # Used to host cibuildwheel
+      - name: Pip install and build wheels
+        run: |
+          # python -m pip install cibuildwheel
+          # python -m cibuildwheel --output-dir ciwheelhouse
+          python -m pip install --upgrade wheel
+          pip wheel --wheel-dir wheelhouse .
+      - name: Test wheels
+        run: |
+          pip install wheelhouse/msmbuilder2022*.whl
+          
+          conda install -yq numdifftools hmmlearn
+          pip install pytest
+          pip install pytest-cov
+          mkdir ../../pkgs
+          cp -r msmbuilder/tests ../../pkgs
+          cd ../../pkgs
+          python tests/data_init.py
+          pytest tests/ -v
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}-${{ matrix.python-version }}-${{ strategy.job-index }}
+          path: wheelhouse/msmbuilder2022*.whl
+  
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}-${{ matrix.python-version }}-${{ strategy.job-index }}
