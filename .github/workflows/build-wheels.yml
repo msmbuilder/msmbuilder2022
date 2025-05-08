@@ -49,8 +49,11 @@ jobs:
         run: |
           conda config --add channels conda-forge 
           # conda install -yq conda-build jinja2 conda-verify
-          conda install -yq zlib
-          conda install h5py
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            conda install -yq zlib libstdcxx-ng h5py 
+          else
+            conda install -yq zlib h5py 
+          fi
           python -m pip install --upgrade pip
       # Used to host cibuildwheel
       - name: Pip install and build wheels
@@ -63,7 +66,8 @@ jobs:
         run: |
           pip install wheelhouse/msmbuilder2022*.whl
           
-          conda install -yq numdifftools hmmlearn
+          # conda install -yq numdifftools hmmlearn
+          pip install numdifftools hmmlearn statsmodels
           pip install pytest
           pip install pytest-cov
           mkdir ../../pkgs

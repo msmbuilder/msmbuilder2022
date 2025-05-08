@@ -359,7 +359,7 @@ The cluster number to which an element was assigned.
         /* j = binomial(n, p); */
         args = Py_BuildValue("(dd)", static_cast<double>(n), p);
         result = PyObject_Call(binomial, args, NULL);
-        j = PyInt_AsLong(result);
+        j = PyLong_AsLong(result);
         Py_DECREF(args);
         Py_DECREF(result);
 
